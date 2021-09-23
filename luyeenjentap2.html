@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="Bài 1" onclick="bai1()">  Viết hàm tính bình phương của một số bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.
+<br><input type="button" value="Bài 2" onclick="bai2()">Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được
+<br><input type="button" value="Bài 3" onclick="bai3()">Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.
+<br><input type="button" value="Bài 4" onclick="bai4()">Viết hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không. Nếu là ký tự số hàm trả về true, ngược lại trả về false.
+<br><input type="button" value="Bài 5" onclick="bai5()"> Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.
+<br><input type="button" value="Bài 6" onclick="bai6()"> Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là nguyên dương không. Nếu là nguyên dương trả về true, ngược lại trả về false.
+<br><input type="button" value="Bài 7" onclick="bai7()">  Viết hàm truyền vào 2 số nguyên bất kì, thực hiện đổi chỗ hai số nguyên đó.
+<br><input type="button" value="Bài 8" onclick="bai8()">Viết hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó.
+<br><input type="button" value="Bài 9" onclick="bai9()"> Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không. Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1.
+
+
+<script>
+    function bai1(){
+     let a = +prompt('nhập số')
+    alert(a= a*a)
+    }
+
+
+    function bai2(r, pi) {
+        let S = r*r*pi
+        return S
+    }
+    function chuVi(r, pi) {
+        let C = 2*r*pi
+        return C
+    }
+
+    function bai3() {
+        let so = Number(prompt("Nhập vào một số tính giai thừa"))
+        let gt = giaiThua(so)
+        document.write("Giai thừa của "+so+" = "+gt)
+    }
+
+
+
+    function bai4() {
+        let i = prompt("Nhập vào ")
+        let check = kiemTraSoHayChuoi(i)
+        if(check){
+            alert("Đây là số")
+        }else{
+            alert("Đây là chuỗi")
+        }
+    }
+
+    function bai5() {
+        let mang_so = []
+        for (let i=0 ; i<3; i++){
+            mang_so.push(Number(prompt("Nhập vào mảng số thư "+i)))
+        }
+        let min = timMin(mang_so)
+        document.write("Mảng số gồm ["+mang_so+"] <br>")
+        document.write("Số nhỏ nhất trong dãy là "+min)
+    }
+
+
+    function bai6() {
+        let kytu = prompt("Nhập vào ký tự kiểm tra")
+        let check = kiemtraKyTuNguyenAm(kytu)
+        if(check === true){
+            alert(kytu+ " Đây là ký tự số nguyên âm")
+        }else{
+            alert(kytu+ " Không phải ký tự nguyên âm")
+        }
+
+    }
+    function kiemtraKyTuNguyenAm(kytu) {
+        if(/[a-zA-Z]/.test(kytu) ){
+            return true
+        }
+        return false
+    }
+
+
+    function bai7() {
+        let so_a = prompt("Nhập số thứ nhất")
+        let so_b = prompt("Nhập số thứ hai")
+        let ketqua = doiCho2So(so_a,so_b)
+        document.write("Đổi chỗ 2 số: "+ketqua[0] +" , "+ketqua[1])
+    }
+    function doiCho2So(so_a, so_b) {
+        let mang= [so_b,so_a]
+        return mang
+    }
+
+
+    function bai8() {
+        let mangso = [4,1,6,8,2,7,0]
+        document.write("Mảng số gồm mang["+mangso+"]<br>")
+        let daoMang = daoMangSo(mangso)
+        document.write("Đổi chỗ mảng số mangdoi["+daoMang+"]")
+    }
+    function daoMangSo(mangso) {
+        return mangso.reverse()
+    }
+
+
+    function bai9() {
+        let mang = ['a','b','c','c','d','d','d','e','d','f']
+        let kytu = prompt("Nhập vào 1 ký tự bất kỳ")
+        document.write("Mảng gồm ["+mang+"]<br>")
+        let kiemtra = kiemTraTrongMang(kytu, mang)
+        if (kiemtra >0){
+            document.write("Có "+kiemtra+" ký tự "+kytu+" trong mảng")
+        }else{
+            document.write("Không có dữ liệu trong mảng")
+        }
+    }
+    function kiemTraTrongMang(kytu, mang) {
+        let dem=0
+        for (let i=0; i<mang.length; i++){
+            if (kytu === mang[i]) {
+                dem++
+            }
+        }
+        if(dem>0){
+            return dem
+        }
+        return -1
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
