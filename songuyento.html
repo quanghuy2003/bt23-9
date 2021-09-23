@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label><input type="text" id="number" placeholder="Nhập đi"/></label>
+<input type="button" value="In kết quả" onclick="print_number()"/>
+<p id="result"></p>
+</body>
+</html>
+<script>
+    function kiem_tra_snt(n) {
+        let flag = true;
+        if (n < 2) {
+            flag = false;
+        }
+        else {
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        return flag;
+    }
+
+    function print_number() {
+        let number = document.getElementById("number").value;
+        number = parseInt(number);
+        let so_nguyen_to = '';
+        let i = 2;
+        while (i <= number) {
+            if (kiem_tra_snt(i)) {
+                so_nguyen_to += i + ' <br/>';
+            }
+            i++
+        }
+        document.getElementById("result").innerHTML = so_nguyen_to;
+    }
+</script>
+</body>
+</html>
