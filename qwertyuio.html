@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<input id="txt">
+<button onclick="create()">Thêm</button>
+<table id="list">
+</table>
+<div id="edit-form"></div>
+<script>
+    let listProduct = ['Ip13', 'S10', 'X18', 'Ip12', 'M20'];
+    display();
+
+    function create() {
+        let product = document.getElementById('txt').value;
+        listProduct.push(product);
+        console.log(listProduct);
+        display();
+    }
+
+    function display() {
+        let str = '<tr><td>Product Name</td><td></td><td>' + listProduct.length + ' products</td></tr>'
+        for (let i = 0; i < listProduct.length; i++) {
+            str += `<tr>`;
+            str += `<td>${listProduct[i]}</td>` // str += '<td>' + listProduct[i] +'</td>'
+            str += `<td><button onclick="showEditForm(${i})">Edit</button></td>`;
+            str += `<td><button>Delete</button></td>`;
+            str += `</tr>`;
+        }
+
+        document.getElementById('list').innerHTML = str;
+    }
+
+    function showEditForm(index) {
+        let str = `<input id="txtEdit" value="${listProduct[index]}"><button onclick="save(${index})">Save</button>`
+        document.getElementById('edit-form').innerHTML = str;
+    }
+
+    function save(index) {
+        let newProduct = document.getElementById('txtEdit').value;
+        listProduct[index] = newProduct;
+        display();
+        document.getElementById('edit-form').innerHTML = '';
+    }
+
+</script>
+</body>
+</html>
